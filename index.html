@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giveaway Countdown</title>
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Sets the font family and size of the timer */
+        
+        .timer {
+            Font-family: “Orbitron”, sans-serif;
+            Font-size: 3em;
+            Text-align: center;
+        }
+        /* Sets the color of the timer according to the time left */
+        
+        .timer {
+            Color: green;
+        }
+        
+        .timer[data-time-left^=”0s”] {
+            Color: red;
+        }
+        
+        .timer[data-time-left^=”1s”],
+        .timer[data-time-left^=”2s”],
+        .timer[data-time-left^=”3s”] {
+            Color: yellow;
+        }
+        /* Select the image element */
+        
+        img {
+            /* Set the width and height of the image */
+            width: 600px;
+            height: 600px;
+            /* Add a border around the image */
+            border: 5px solid #f0f0f0;
+            /* Add a rounded corner to the image */
+            border-radius: 10px;
+            /* Add a shadow effect to the image */
+            box-shadow: 0 0 10px rgba(32, 34, 66, 0.2);
+            /* Center the image */
+            display: block;
+            margin: 0 auto;
+        }
+        /* Add a text overlay on the image */
+        
+        p,
+        h1 {
+            /* Position the text relative to the image */
+            top: 50%;
+            left: 50%;
+            /* Set the text color and size */
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            /* Add a background color to the text */
+            background-color: rgba(43, 76, 82, 0.5);
+            /* Add some padding to the text */
+            padding: 10px;
+            /* Add a rounded corner to the text */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="Y03429_P6742_HA280_E.jpg">
+    </div>
+    <div class="container2">
+
+        <h1>HEELS GIVEAWAY!!</h1>
+        <p>
+            "Giveaway ends by 11:30 AM, on Sunday 10th of March, 2024"
+        </p>
+    </div>
+    <div class="text3">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br> Nam venenatis libero vitae neque convallis tempus ac vel sapien.<br> Nulla metus ipsum, placerat id cursus sed, commodo et purus.<br> Aenean tincidunt sed sapien et iaculis.<br> Vivamus
+            vel lorem vel magna viverra tempus vel scelerisque orci. <br> Integer vestibulum neque dui, in lobortis urna porta vel.
+        </p>
+    </div>
+
+    <div id="timer" class="timer">
+    </div>
+
+
+
+    <script>
+        // Set the initial time in seconds
+        var timeLeft = 10 * 24 * 60 * 60;
+        // Set the data-time-left attribute to the time left
+        document.getElementById("timer").setAttribute("data-time-left", timeLeft);
+
+
+        // Set the initial timestamp
+        var startTime = performance.now();
+        // Declare and initialize a new variable with the Date object
+        var targetDate = new Date(targetTime);
+
+
+        // Calculate the target timestamp
+        var targetTime = startTime + timeLeft * 1000;
+
+
+
+        // Update the timer every 1 second
+        var timer = setInterval(function() {
+
+            // Get the current timestamp
+            var currentTime = performance.now();
+
+            // Calculate the difference between the current and target timestamp
+            var diff = targetTime - currentTime;
+
+
+            // If the difference is positive, update the time left
+            if (diff > 0) {
+                // Convert the difference to seconds
+                timeLeft = Math.floor(diff / 1000);
+
+                // Display the time left in the element
+                document.getElementById("timer").innerHTML = formatTime(timeLeft);
+            } else {
+                // If the difference is zero or negative, reset the timer and the target date and time
+                timeLeft = 10 * 24 * 60 * 60;
+                targetDate.setDate(targetDate.getDate() + 10);
+                document.getElementById("timer").innerHTML = formatTime(timeLeft);
+            }
+        }, 1000);
+
+        // Format the time left to show days, hours, minutes, and seconds
+        function formatTime(timeLeft) {
+            // Calculate the number of days, hours, minutes, and seconds
+            var days = Math.floor(timeLeft / (24 * 60 * 60));
+            var hours = Math.floor((timeLeft % (24 * 60 * 60)) / (60 * 60));
+            var minutes = Math.floor((timeLeft % (60 * 60)) / 60);
+            var seconds = Math.floor(timeLeft % 60);
+
+            // Add leading zeros if needed
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                Seconds = "0" + seconds;
+            }
+
+            // Return the formatted time
+            return days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        } // Set the initial time in seconds
+        var timeLeft = 10 * 24 * 60 * 60;
+        // Set the data-time-left attribute to the time left
+        document.getElementById("timer").setAttribute("data-time-left", timeLeft);
+
+
+        // Set the initial timestamp
+        var startTime = performance.now();
+        // Declare and initialize a new variable with the Date object
+        var targetDate = new Date(targetTime);
+
+
+        // Calculate the target timestamp
+        var targetTime = startTime + timeLeft * 1000;
+
+
+
+        // Update the timer every 1 second
+        var timer = setInterval(function() {
+
+            // Get the current timestamp
+            var currentTime = performance.now();
+
+            // Calculate the difference between the current and target timestamp
+            var diff = targetTime - currentTime;
+
+
+            // If the difference is positive, update the time left
+            if (diff > 0) {
+                // Convert the difference to seconds
+                timeLeft = Math.floor(diff / 1000);
+
+                // Display the time left in the element
+                document.getElementById("timer").innerHTML = formatTime(timeLeft);
+            } else {
+                // If the difference is zero or negative, reset the timer and the target date and time
+                timeLeft = 10 * 24 * 60 * 60;
+                targetDate.setDate(targetDate.getDate() + 10);
+                document.getElementById("timer").innerHTML = formatTime(timeLeft);
+            }
+        }, 1000);
+
+        // Format the time left to show days, hours, minutes, and seconds
+        function formatTime(timeLeft) {
+            // Calculate the number of days, hours, minutes, and seconds
+            var days = Math.floor(timeLeft / (24 * 60 * 60));
+            var hours = Math.floor((timeLeft % (24 * 60 * 60)) / (60 * 60));
+            var minutes = Math.floor((timeLeft % (60 * 60)) / 60);
+            var seconds = Math.floor(timeLeft % 60);
+
+            // Add leading zeros if needed
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                Seconds = "0" + seconds;
+            }
+
+            // Return the formatted time
+            return days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        }
+    </script>
+</body>
+
+</html>
